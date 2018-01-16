@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_Controls : MonoBehaviour {
-
-    public KeyCode moveUp = KeyCode.W;
-    public KeyCode moveDown = KeyCode.S;
-    public float mySpeed = 10.0f;
-    public float maxY = 5.0f;
+    
+    // These are set in Unity:
+    public KeyCode moveUp;
+    public KeyCode moveDown;
+    public float mySpeed;
+    public float maxY;
     private Rigidbody2D myRB2d;
 
     // Use this for initialization

@@ -49,10 +49,10 @@ public class Game_Manager : MonoBehaviour
     void OnGUI()
     {
         GUI.skin = layout;
-        GUI.Label(new Rect(Screen.width * 0.06f, 20, 100, 100), "" + Player1_Score);
-        GUI.Label(new Rect(Screen.width * 0.9f, 20, 100, 100), "" + Player2_Score);
+        GUI.Label(new Rect(Screen.width * 0.1f, 10, 100, 100), "" + Player1_Score);
+        GUI.Label(new Rect(Screen.width * 0.86f, 10, 100, 100), "" + Player2_Score);
 
-        if (GUI.Button(new Rect(Screen.width / 2 - 50, 20, 100, 40), "RESTART"))
+        if (GUI.Button(new Rect(Screen.width / 2 - 50, 10, 100, 40), "RESTART"))
         {
             ResetScore();
             theBall.SendMessage("RestartBall", 1, SendMessageOptions.RequireReceiver);
