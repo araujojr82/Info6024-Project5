@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: bd31af21bde9b49459d558656f8cedb6
-timeCreated: 1516123262
+guid: 02011e22f4c2bc44c94ce62ab9e75ec6
+timeCreated: 1516127215
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: 6809 Chargen
+  fontName: Emulogic
   fontNames:
-  - 6809 Chargen
+  - Emulogic
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
