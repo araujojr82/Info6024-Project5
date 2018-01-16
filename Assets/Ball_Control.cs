@@ -7,6 +7,9 @@ public class Ball_Control : MonoBehaviour {
     private Rigidbody2D BallRB2d;
     private Vector2 BallSpeed;
 
+    public AudioClip[] audioClips;
+    AudioSource audioSource;
+
     void StartBall()
     {
         float randX = Random.Range(0, 2);
@@ -27,6 +30,13 @@ public class Ball_Control : MonoBehaviour {
     void Start () {
         BallRB2d = GetComponent<Rigidbody2D>();
         Invoke("StartBall", 2);
+
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void PlaySound(int clip)
+    {        
+        audioSource.PlayOneShot(audioClips[clip], 0.7f);
     }
 
     void RestartBall()
@@ -49,11 +59,13 @@ public class Ball_Control : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.collider.CompareTag("Player"))
+        if (coll.collider.CompareTag("Player") )
         {
-            BallSpeed.x = BallRB2d.velocity.x;
-            BallSpeed.y = (BallRB2d.velocity.y / 4.0f) + (coll.collider.attachedRigidbody.velocity.y / 6.0f);
-            BallRB2d.velocity = BallSpeed;
+            PlaySound(0);
+        }
+        else if(coll.collider.CompareTag("wall"))
+        {
+            PlaySound(1);
         }
     }
 }

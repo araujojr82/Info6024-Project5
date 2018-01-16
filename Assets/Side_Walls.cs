@@ -16,7 +16,8 @@ public class Side_Walls : MonoBehaviour {
 
             if ( score1 >= 10 || score2 >= 10 )
             {   // Game is over, dont restart the ball
-            //    // Do Nothing, its the end of the game
+                //    // Do Nothing, its the end of the game
+                hitInfo.gameObject.SendMessage("PlaySound", 3, SendMessageOptions.RequireReceiver);
                 hitInfo.gameObject.SendMessage("EndGame", 1, SendMessageOptions.RequireReceiver);
             }
             else           
