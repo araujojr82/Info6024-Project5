@@ -15,7 +15,23 @@ public class Game_Manager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        theBall = GameObject.FindGameObjectWithTag("Ball");
+        theBall = GameObject.FindGameObjectWithTag("ball");
+    }
+
+    void ResetScore()
+    {
+        Player1_Score = 0;
+        Player2_Score = 0;
+    }
+
+    public static int GetScore( int player )
+    {
+        if (player == 1)
+            return Player1_Score;
+        else if (player == 2)
+            return Player2_Score;
+        else 
+            return 0;
     }
 
     public static void Score(string wallID)
@@ -38,19 +54,18 @@ public class Game_Manager : MonoBehaviour
 
         if (GUI.Button(new Rect(Screen.width / 2 - 50, 20, 100, 40), "RESTART"))
         {
-            Player1_Score = 0;
-            Player2_Score = 0;
-            theBall.SendMessage("RestartGame", 0.5f, SendMessageOptions.RequireReceiver);
+            ResetScore();
+            theBall.SendMessage("RestartBall", 1, SendMessageOptions.RequireReceiver);
         }
 
         if (Player1_Score == 10)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER ONE WINS");
+            GUI.Label(new Rect(Screen.width / 2 - 300, 200, 2000, 1000), "Player One Wins!");
             theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
         }
         else if (Player2_Score == 10)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 150, 200, 2000, 1000), "PLAYER TWO WINS");
+            GUI.Label(new Rect(Screen.width / 2 - 300, 200, 2000, 1000), "Player Two Wins!");
             theBall.SendMessage("ResetBall", null, SendMessageOptions.RequireReceiver);
         }
     }

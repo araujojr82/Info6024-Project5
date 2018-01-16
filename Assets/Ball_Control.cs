@@ -22,16 +22,22 @@ public class Ball_Control : MonoBehaviour {
             else           BallRB2d.AddForce(new Vector2(-20, -15));
         }
     }
+    
     // Use this for initialization
     void Start () {
         BallRB2d = GetComponent<Rigidbody2D>();
-        Invoke("GoBall", 2);
+        Invoke("StartBall", 2);
     }
 
-    void RestartGame()
+    void RestartBall()
     {
         ResetBall();
-        Invoke("GoBall", 1);
+        Invoke("StartBall", 1);
+    }
+
+    void EndGame()
+    {
+        ResetBall();
     }
 
     void ResetBall()
@@ -46,13 +52,8 @@ public class Ball_Control : MonoBehaviour {
         if (coll.collider.CompareTag("Player"))
         {
             BallSpeed.x = BallRB2d.velocity.x;
-            BallSpeed.y = (BallRB2d.velocity.y / 2.0f) + (coll.collider.attachedRigidbody.velocity.y / 3.0f);
+            BallSpeed.y = (BallRB2d.velocity.y / 4.0f) + (coll.collider.attachedRigidbody.velocity.y / 6.0f);
             BallRB2d.velocity = BallSpeed;
         }
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }
