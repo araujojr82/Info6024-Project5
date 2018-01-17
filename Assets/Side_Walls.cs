@@ -11,16 +11,13 @@ public class Side_Walls : MonoBehaviour {
             string wallName = transform.name;
             Game_Manager.Score(wallName);
 
-            int score1 = Game_Manager.GetScore(1);
-            int score2 = Game_Manager.GetScore(2);
-
-            if ( score1 >= 10 || score2 >= 10 )
+            hitInfo.gameObject.SendMessage("SetPlayerControl", 0, SendMessageOptions.RequireReceiver);
+            if (Game_Manager.GetScore(1) == 10 || Game_Manager.GetScore(2) == 10 )
             {   // Game is over, dont restart the ball
-                //    // Do Nothing, its the end of the game
-                hitInfo.gameObject.SendMessage("PlaySound", 3, SendMessageOptions.RequireReceiver);
+                hitInfo.gameObject.SendMessage("PlaySound", 3, SendMessageOptions.RequireReceiver);                
                 hitInfo.gameObject.SendMessage("EndGame", 1, SendMessageOptions.RequireReceiver);
             }
-            else           
+            else                
                 hitInfo.gameObject.SendMessage("RestartBall", 1, SendMessageOptions.RequireReceiver);
         }
     }
