@@ -68,4 +68,13 @@ public class Ball_Control : MonoBehaviour {
             PlaySound(1);
         }
     }
+    void Update()
+    {
+        Vector3 moveDirection = gameObject.transform.position - Vector3.zero;
+        if (moveDirection != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+    }
 }
